@@ -1,0 +1,52 @@
+package lab3;
+
+class User{
+	String _username;
+	String _password;
+	String _directory;
+	String _unmask;
+}
+
+class File{
+	String _name;
+	int _id;
+	String _owner;
+	String _date;
+}
+
+class Dir extends File{
+	String _owndir;
+	String _fatherdir;
+	int _size;
+}
+
+class PlainFile extends File{
+	String _content;
+}
+
+class Link extends PlainFile{
+}
+
+class App extends PlainFile{
+}
+
+relation UserFile {
+    User playsRole user{
+	multiplicity 1;
+	}
+    File playsRole file {
+        multiplicity *;
+    }
+}
+
+relation FileDir {
+    File playsRole file{
+		multiplicity *;
+	}
+    Dir playsRole dir {
+        multiplicity 1;
+    }
+}
+
+
+
